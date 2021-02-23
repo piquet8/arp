@@ -1,0 +1,11 @@
+To compile files:
+gcc R.c -o R
+gcc H.c -o H
+gcc S.c -o S
+
+To execute files:
+In two separate shells use commands:
+./S port_num
+./R localhost port_num
+
+(n_port can be any integer between 2000 and 65535 )

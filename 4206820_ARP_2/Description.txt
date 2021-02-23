@@ -1,0 +1,21 @@
+Authors: Gianluca Piquet 4206820
+	 Maria Luisa Aiachini 4375373
+
+
+This program is a simple simulation of a remote control of a hoist. We have three files R, S and H:
+R simulate the control interface,
+S is the server,
+H simulate the hoist behaviour.
+
+The user has four possible commands to interact with the hoist, they are represented as integers:
+0 = STOP, stops the hoist motion.
+1 = UP, increases the position of the hoist.
+2 = DOWN, decreases the position of the hoist.
+3 = OFF, turns off the simulation.
+
+Anytime the user can change the movement by pressing Ctrl+Z and giving a new command.
+
+The server S allows the comminication between R and H, it receives commands from R via socket and sends it to H via unnamed pipe; S also receives feedback about the hoist position from H via a second unnamed pipe and sends this feedback to R via socket.
+
+H is the hoist simulator: this is represented by a simple variable z that can increase or decrease. The position of the hoist can vary between 0 cm and 200 cm with a 5 cm/s velocity. The initial position of the hoist is fixed at 0 cm. If the hoist reaches the maximum or minimum values, the message "End run" is printed and the program forbids to continue in the same direction.
+

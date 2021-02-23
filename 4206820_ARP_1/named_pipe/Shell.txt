@@ -1,0 +1,10 @@
+To execute the assignment(named pipe):
+
+gcc es1.c -o es1
+gcc g1.c -o g1
+gcc g2.c -o g2
+gcc R.c -o R
+gcc M.c -o M
+./es1
+
+PRESS 1 TO TERMINATE THE EXECUTION

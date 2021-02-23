@@ -1,0 +1,12 @@
+Results report:
+as I wirtten in the file descriptor of the two versions of the assignment(unnamed_pipe, named_pipe) they are different only for the type of pipe used. 
+
+However the function remains the same: 
+R using function "select" reads from the first or the second pipe and fills a buffer of dimension DIM (10000 in my case)
+When the buffer is full R sends it to M and then the buffer is ready to be filled again.
+M reads the buffer of messages from the pipe and computes the throughput for each buffer.
+The throughput is computed as the ratio between the number of messages in the buffer multiply for the size of them and the difference between the last timestamp and the first one.
+
+I ran several tests by varing the Offset(2,10,50,100) present in g1 and g2 to see how the band changed and these results show that:
+- when the offset increases, the band decreases  
+- with the same offset the unnamed pipe has grater bandwidth than named pipe

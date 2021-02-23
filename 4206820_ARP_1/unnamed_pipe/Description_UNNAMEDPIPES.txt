@@ -1,0 +1,26 @@
+ARP-first assignment UNNAMED PIPES
+
+I created a main process call master which contains three pipes:
+-one for the communication between g1-R, 
+-one for the communication between g2-R 
+-one for the communication between R-M 
+Also it contains four childs for the execution of the single programm, using function "execve": 
+-the first child executes the function "G1" 
+-the second executes "G2" 
+-the third "R"  
+-the last "M"
+
+When I execute the master g1 and g2 start to create and send messages using system call "write". 
+(each message is composed by a timestamp, the process identifier and a little datum identifying the messagge itself)
+Each message is delayed by a time "delay" wich is a composed by a random part described by the variable Offset(this variable will be changed for the experiment).
+
+R using function "select" reads from the first or the second pipe and fills a buffer of dimension DIM. 
+When the buffer is full R sends it to M using the third pipe and then the buffer is ready to be filled again.
+
+M reads the buffer of messages from the pipe and computes the throughput for each buffer.
+The throughput is computed as the ratio between the number of messages in the buffer multiply for the size of them and the difference between the last timestamp and the first one.
+
+Then it prints the results in a text file. 
+
+The master process asks at user when he wants to terminate all the process, this happens when the user press "1". 
+It makes all the childs terminate using function "kill" so all childs exit form their while loops so they can close all file descriptors and then terminate.
